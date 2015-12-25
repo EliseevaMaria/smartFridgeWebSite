@@ -1,0 +1,28 @@
+﻿@{
+        ViewBag.Title = "FridgeIndex";
+}
+<input type="hidden" id="email" value=@Model />
+<div class="dark-div" ng-click="showHideMenu()"></div>
+<div class="container content" ng-controller="FridgeCtrl">
+    <div class="mobile-header" layout="row" hide-gt-sm>
+        <button type="button" class="btn btn--m btn--blue btn--icon" ng-click="showHideMenu()">
+            <i class="mdi mdi-menu"></i>
+        </button>
+        <h2>Fridge</h2>
+    </div>
+    <div class="table-head" layout="row">
+        <div>№</div>
+        <div>Name</div>
+        <div>Fridge Temp</div>
+        <div>Freezer Temp</div>
+    </div>
+    <div ng-if="fridges == null">Loading...</div>
+    <div ng-if="fridges == []">You didn't bind any fridge to this account. Please, use fridge console to do it.</div>
+    <div ng-if="fridges != null" class="fridges" ng-repeat="fridge in fridges track by $index" layout="row">
+        <div>{{$index + 1}}</div>
+        <div>{{fridge.Name}}</div>
+        <div>{{fridge.FridgeTemp}}</div>
+        <div>{{fridge.FreezerTemp}}</div>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+{
+  "name": "smartFridge",
+  "dependencies": {
+    "jquery": "latest",
+    "angular": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap": "latest",
+    "lumx": "latest",
+    "moment": "latest",
+    "velocity": "latest"
+  }
+}

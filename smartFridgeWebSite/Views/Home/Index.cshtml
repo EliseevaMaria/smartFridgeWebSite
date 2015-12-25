@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/SignInLayout.cshtml";
+}
+
+@using Microsoft.Owin.Security
+<div class="background-image" layout="column" layout-align="center center">
+    <div class="text-center start-page-content home-block" layout="column" layout-align="space-between center">
+        <div class="error-logo"></div>
+        <h1>Welcome to the SmartFridge!</h1>
+        <div class="hr"></div>
+        <p>SmartFridge is your fridge control unit that can save your life! Just bind your fridge to Google account, sign in with it and feel all of power of smart fridges. Work with your fridge remotely, watch your products, choose reciepts. Evereything you need is here!</p>
+        <div class="hr"></div>
+        @{
+            var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+            using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = "" }))
+            {
+                @Html.AntiForgeryToken()
+                <div id="socialLoginList">
+                    @foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        <button type="submit" class="btn btn--m btn--blue btn--raised" lx-ripple id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">Sign in with @p.AuthenticationType</button>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
